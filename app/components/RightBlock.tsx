@@ -46,7 +46,7 @@ const RightBlock = () => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="bg-sky-100 basis-5/6">
+    <div className="bg-sky-100 basis-full sm:basis-3/4 p-2">
       <div className="text-4xl p-2 italic">
         <h1>Featured Products</h1>
       </div>
@@ -57,7 +57,7 @@ const RightBlock = () => {
           suited for your use case.
         </p>
       </div>
-      <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {currentPageData.map((item) => (
           <Card key={item.id} item={item} />
         ))}
