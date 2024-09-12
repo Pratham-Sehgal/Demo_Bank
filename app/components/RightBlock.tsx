@@ -12,13 +12,13 @@ const RightBlock = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let response = await fetch("https://jsonplaceholder.typicode.com/posts");
-        let data = await response.json();
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const data = await response.json();
         setRes(data); // Save the fetched data to the state
         setLoading(false); // Stop loading after data is fetched
       } catch (err) {
         setError(err.message);
-        sLoading(false);et
+        setLoading(false);
       }
     };
     fetchData();
@@ -41,7 +41,7 @@ const RightBlock = () => {
       <div className="text-4xl p-2 italic">
         <h1>Featured Products</h1>
       </div>
-      <hr class=" border-gray-200 sm:mx-1 dark:border-gray-700 " />
+      <hr className=" border-gray-200 sm:mx-1 dark:border-gray-700 " />
       <div className="text-xl p-1">
         <p>
           Explore wide range of APIs and choose required APIs that are best
