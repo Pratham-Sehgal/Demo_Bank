@@ -2,22 +2,32 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
+// Define the type for the data
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
 const RightBlock = () => {
-  const [res, setRes] = useState([]);
+  // Type the state as an array of Post
+  const [res, setRes] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const cardsPerPage = 12; // Display 9 cards per page
+  const cardsPerPage = 12; // Display 12 cards per page
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data: Post[] = await response.json();
         setRes(data); // Save the fetched data to the state
         setLoading(false); // Stop loading after data is fetched
-      } catch (err) {
-        setError(err.message);
+      } catch {
+        // Ignore errors and just stop loading
         setLoading(false);
       }
     };
@@ -31,21 +41,20 @@ const RightBlock = () => {
 
   const totalPages = Math.ceil(res.length / cardsPerPage);
 
-  const handlePageChange = (page) => setCurrentPage(page);
+  const handlePageChange = (page: number) => setCurrentPage(page);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="bg-sky-100 basis-5/6">
       <div className="text-4xl p-2 italic">
         <h1>Featured Products</h1>
       </div>
-      <hr className=" border-gray-200 sm:mx-1 dark:border-gray-700 " />
+      <hr className="border-gray-200 sm:mx-1 dark:border-gray-700" />
       <div className="text-xl p-1">
         <p>
-          Explore wide range of APIs and choose required APIs that are best
-          suited for your use case
+          Explore a wide range of APIs and choose the ones that are best
+          suited for your use case.
         </p>
       </div>
       <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

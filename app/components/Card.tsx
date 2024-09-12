@@ -1,10 +1,17 @@
 import React from "react";
 
+// Define the type for the item prop
+interface Item {
+  title: string;
+  body: string;
+}
+// Define the type for the component props
+interface CardProps {
+  item: Item;
+}
 
-const Card = ({ item }) => {
+const Card: React.FC<CardProps> = ({ item }) => {
   return (
-
-    
     <div className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg h-full">
       <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
         <img
