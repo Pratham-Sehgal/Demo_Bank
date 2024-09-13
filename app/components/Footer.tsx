@@ -7,7 +7,7 @@ const Footer = () => {
 
 
 
-        <footer className="bg-white rounded-lg shadow p-4 dark:bg-gray-900 m-1">
+        <footer className="w=100 bg-white rounded-lg shadow p-4 dark:bg-gray-900 m-1">
    
         
         <hr className=" border-gray-200 sm:mx-auto dark:border-gray-700 " />

@@ -5,7 +5,7 @@ const Block = () => {
   return (
     <div>
 
-    <div className='mx-3 flex flex-row'>
+    <div className=' mx-3 flex flex-row'>
       <LeftBlock />
       <RightBlock/>
     </div>
